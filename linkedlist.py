@@ -315,6 +315,14 @@ elif pilih == 3:
     pilhpnmbhn = int(input("Pilih Menu : "))
     if pilhpnmbhn == 1 :
         pass
+elif pilih == 4:
+    list1.UbahData()
+    list1.tampilData()
+
+elif pilih == 5:
+    list1.tampilData()
+elif pilih == 0 :
+    print("Exit ")
 
 # 4. Traversal Linked List - Menampilkan Data
 #list1.tampilData()
