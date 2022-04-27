@@ -57,11 +57,11 @@ class linkedList:
 
 # Operasi Pencarian
 # Pencarian Data
-    def PencarianAngka (self) :
+    def PencarianKodeBarang (self) :
         if self.isEmpty():
             print ("Data Kosong")
         else:
-            CariAngka = int(input("Masukan Angka Yang Dicari : "))
+            CariAngka = int(input("Masukan Kode Barang Yang Ingin Dicari : "))
             bantu = self.awal
             ketemu = False
             while (not ketemu) and (bantu is not None):
@@ -70,28 +70,82 @@ class linkedList:
                 else:
                     bantu = bantu.next
             if(ketemu):
-                print("Angka",CariAngka,"Ditemukan")
+                print("Kode Barang",CariAngka,"Ditemukan")
+                if (CariAngka == 234):
+                    namaBarang = "Beng-Beng"
+                    print("Nama Barang : ",namaBarang)
+                elif (CariAngka == 345):
+                    namaBarang = "Good Day"
+                    print("Nama Barang : ",namaBarang)
+                elif(CariAngka == 223):
+                    namaBarang = "milo"
+                    print("Nama Barang : ",namaBarang)
+                elif(CariAngka == 101):
+                    namaBarang = "Garnier Facial Wash"
+                    print("Nama Barang : ",namaBarang)
+                elif(CariAngka == 255):
+                    namaBarang ="Bimoli"
+                    print("Nama Barang : ",namaBarang)
+                else:
+                    print("Barang tidak di temukan")
             else:
-                print("Angka",CariAngka,"Tidak Ditemukan")
+                print("Kode Barang",CariAngka,"Tidak Ditemukan")
 # Pencarian Node
-    def PencarianNode (self) :
-        if self.isEmpty():
+    def PencarianStock (self) :
+         if self.isEmpty():
             print ("Data Kosong")
-        else:
-            CariNode = int(input("Masukan Node Yang Dicari : "))
+         else:
+            CariKode = int(input("Masukan Kode Barang Yang Ingin Dicari : "))
             bantu = self.awal
             ketemu = False
-            posisi = 1
             while (not ketemu) and (bantu is not None):
-                if (posisi == CariNode):
+                if (bantu.info == CariKode):
                     ketemu = True
                 else:
                     bantu = bantu.next
-                    posisi += 1
             if(ketemu):
-                print("Node Ke -",CariNode,"Ditemukan")
+                print("Kode Barang",CariKode,"Ditemukan")
+                if (CariKode == 234):
+                    namaBarang = "Beng-Beng"
+                    stock = 30
+                    status = "Aman"
+                    print("Nama Barang  : ",namaBarang)
+                    print("Stock Barang : ",stock)
+                    print("Status       : ",status)
+                elif (CariKode == 345):
+                    namaBarang = "Good Day"
+                    stock = 20
+                    status = "Aman"
+                    print("Nama Barang  : ",namaBarang)
+                    print("Stock Barang : ",stock)
+                    print("Status       : ",status)
+                elif(CariKode == 223):
+                    namaBarang = "milo"
+                    stock = 15
+                    status = "Aman"
+                    print("Nama Barang  : ",namaBarang)
+                    print("Stock Barang : ",stock)
+                    print("Status       : ",status)
+                elif(CariKode == 101):
+                    namaBarang = "Garnier Facial Wash"
+                    stock = 17
+                    status = "Aman"
+                    print("Nama Barang  : ",namaBarang)
+                    print("Stock Barang : ",stock)
+                    print("Status       : ",status)
+                elif(CariKode == 255):
+                    namaBarang ="Bimoli"
+                    stock = 0
+                    status = "Gawat"
+                    print("Nama Barang  : ",namaBarang)
+                    print("Stock Barang : ",stock)
+                    print("Status       : ",status)
+                else:
+                    print("Barang tidak di temukan")
             else:
-                print("Node Ke -",CariNode,"Tidak Ditemukan")
+                print("Kode Barang",CariKode,"Tidak Ditemukan")
+    def hargaJual(self):
+        pass
 
 # Penambahan Data
 # Penambahan di Depan
@@ -314,7 +368,9 @@ elif pilih == 3:
     print("3.Pencarian Harga Jual Tertentu")
     pilhpnmbhn = int(input("Pilih Menu : "))
     if pilhpnmbhn == 1 :
-        pass
+        list1.PencarianKodeBarang()
+    elif(pilhpnmbhn == 2):
+        list1.PencarianStock()
 elif pilih == 4:
     list1.UbahData()
     list1.tampilData()
