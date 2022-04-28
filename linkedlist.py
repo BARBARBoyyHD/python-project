@@ -91,11 +91,23 @@ class linkedList:
             else:
                 print("Kode Barang",CariAngka,"Tidak Ditemukan")
 # Pencarian Node
-    def PencarianStock (self) :
+    def sts(self,CariKode):
+        if(CariKode == 234):
+            stat = "aman"
+        elif(CariKode == 345):
+            stat = "aman"
+        elif(CariKode == 223):
+            stat = "aman"
+        elif(CariKode == 101):
+            stat = "aman"
+        elif(CariKode == 225):
+            stat ="Tidak aman"
+        return stat
+    
+    def PencarianStock (self,CariKode) :
          if self.isEmpty():
             print ("Data Kosong")
          else:
-            CariKode = int(input("Masukan Kode Barang Yang Ingin Dicari : "))
             bantu = self.awal
             ketemu = False
             while (not ketemu) and (bantu is not None):
@@ -106,45 +118,46 @@ class linkedList:
             if(ketemu):
                 print("Kode Barang",CariKode,"Ditemukan")
                 if (CariKode == 234):
-                    namaBarang = "Beng-Beng"
+                    namaBarang = "Chocolatos"
                     stock = 30
-                    status = "Aman"
+                    dasd = self.sts(CariKode)
                     print("Nama Barang  : ",namaBarang)
                     print("Stock Barang : ",stock)
-                    print("Status       : ",status)
+                    print("Status       : ",dasd)
                 elif (CariKode == 345):
                     namaBarang = "Good Day"
                     stock = 20
-                    status = "Aman"
+                    dasd = self.sts(CariKode)
                     print("Nama Barang  : ",namaBarang)
                     print("Stock Barang : ",stock)
-                    print("Status       : ",status)
+                    print("Status       : ",dasd)
                 elif(CariKode == 223):
                     namaBarang = "milo"
                     stock = 15
-                    status = "Aman"
+                    dasd = self.sts(CariKode)
                     print("Nama Barang  : ",namaBarang)
                     print("Stock Barang : ",stock)
-                    print("Status       : ",status)
+                    print("Status       : ",dasd)
                 elif(CariKode == 101):
                     namaBarang = "Garnier Facial Wash"
                     stock = 17
-                    status = "Aman"
+                    dasd = self.sts(CariKode)
                     print("Nama Barang  : ",namaBarang)
                     print("Stock Barang : ",stock)
-                    print("Status       : ",status)
+                    print("Status       : ",dasd)
                 elif(CariKode == 255):
                     namaBarang ="Bimoli"
                     stock = 0
-                    status = "Gawat"
+                    dasd = self.sts(CariKode)
                     print("Nama Barang  : ",namaBarang)
                     print("Stock Barang : ",stock)
-                    print("Status       : ",status)
+                    print("Status       : ",dasd)
                 else:
                     print("Barang tidak di temukan")
             else:
                 print("Kode Barang",CariKode,"Tidak Ditemukan")
     def hargaJual(self):
+        
         pass
 
 # Penambahan Data
@@ -322,7 +335,7 @@ node4.next = node5
 
 # print("Isi Node1 :",node1.info,"->",node1.next)
 # print("Isi Node2 :",node2.info,"->",node2.next)
-#while
+#while != 0
 if pilih == 1:
     print("------ Menu Penambahan ------")
     print("1.Penambahan Data Barang di Depan")
@@ -374,7 +387,8 @@ elif pilih == 3:
     if pilhpnmbhn == 1 :
         list1.PencarianKodeBarang()
     elif(pilhpnmbhn == 2):
-        list1.PencarianStock()
+        CariKode = int(input("Masukan Kode Barang Yang Ingin Dicari : "))
+        list1.PencarianStock(CariKode)
 elif pilih == 4:
     list1.UbahData()
     list1.tampilData()
