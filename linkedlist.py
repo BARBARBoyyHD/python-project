@@ -156,8 +156,8 @@ class linkedList:
                     print("Barang tidak di temukan")
             else:
                 print("Kode Barang",CariKode,"Tidak Ditemukan")
+    # Bagian Ferdi 
     def hargaJual(self):
-        
         pass
 
 # Penambahan Data
@@ -335,6 +335,8 @@ node4.next = node5
 
 # print("Isi Node1 :",node1.info,"->",node1.next)
 # print("Isi Node2 :",node2.info,"->",node2.next)
+
+# Bagian ferdi
 #while != 0
 if pilih == 1:
     print("------ Menu Penambahan ------")
