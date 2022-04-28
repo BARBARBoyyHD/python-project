@@ -322,12 +322,14 @@ node4.next = node5
 
 # print("Isi Node1 :",node1.info,"->",node1.next)
 # print("Isi Node2 :",node2.info,"->",node2.next)
+#while
 if pilih == 1:
     print("------ Menu Penambahan ------")
     print("1.Penambahan Data Barang di Depan")
     print("2.Penambahan Data Barang di Belakang")
     print("3.Penambahan Data Barang di Tengah")
     pilhpnmbhn = int(input("Pilih Menu : "))
+    # while
     if pilhpnmbhn == 1:
         DataBaru = int(input("Masukan Data Baru : "))
         list1.SisipDepanSingle(DataBaru)
@@ -349,6 +351,7 @@ elif pilih == 2:
      print("2.Penghapusan Data Barang di Belakang")
      print("3.Penghapusan Data Barang di tengah")
      pilhpnmbhn = int(input("Pilih Menu : "))
+     #while
      if pilhpnmbhn == 1:
         list1.HapusDepanSingle()
         list1.tampilData()
@@ -367,6 +370,7 @@ elif pilih == 3:
     print("2.Pencarian stok Tertentu")
     print("3.Pencarian Harga Jual Tertentu")
     pilhpnmbhn = int(input("Pilih Menu : "))
+    #while
     if pilhpnmbhn == 1 :
         list1.PencarianKodeBarang()
     elif(pilhpnmbhn == 2):
