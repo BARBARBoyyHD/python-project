@@ -49,8 +49,13 @@ class LinkedList:
         if self.IsEmpty():
             if Stok >= 35:
                 StatusStok = "Aman"
-            elif Stok < 35:
+            else:
                 StatusStok = "Tidak Aman"
+        else:
+            if Stok < 35:
+                StatusStok = "Tidak Aman"
+            else:
+                StatusStok = "Aman"
 
         return StatusStok
 
