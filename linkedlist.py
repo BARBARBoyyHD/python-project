@@ -243,7 +243,7 @@ class LinkedList:
             min = i
             j = i.next
             while(j is not None):
-                if(j.info < min.info):
+                if(j.info > min.info):
                     min = j
                 j = j.next
 
@@ -267,6 +267,34 @@ class LinkedList:
                 bantu = bantu.next
 
             print()
+    def TampilDatadec(self):
+        print('Isi Linked List : ', end='')
+        if self.IsEmpty():
+            print('Data Kosong')
+        else:
+            bantu = self.awal
+            while bantu is not None:
+                print(bantu.info, ' ', end='')
+                if (bantu.next is not None):
+                    print(' ', end='')
+                bantu = bantu.next
+                i = self.awal
+                while(i.next is not None):
+                    min = i
+                    j = i.next
+                    while(j is not None):
+                        if(j.info > min.info):
+                            min = j
+                        j = j.next
+
+            #Proses pertukaran
+                        temp = min.info
+                        min.info = i.info
+                        i.info = temp
+            #Tempatkan i ke Simpul berikutnya
+                        i = i.next
+            print()
+    
 
 
 List1 = LinkedList()
@@ -291,7 +319,7 @@ def menuUtama():
         elif menu == "4":
             menuPengubahan()
         elif menu == "5":
-            menuTampil()
+            List1.TampilDatadec()
         elif menu == "0":
             List1.Penghancuran()
             print("Kamu keluar dari menu")
