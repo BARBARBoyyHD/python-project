@@ -263,7 +263,7 @@ class LinkedList:
             while bantu is not None:
                 print(bantu.info, ' ', end='')
                 if (bantu.next is not None):
-                    print('->  ', end='')
+                    print(' ', end='')
                 bantu = bantu.next
 
             print()
