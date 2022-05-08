@@ -1,176 +1,82 @@
-#1. Pendefinisian Struktur Data Linked List
-
-
-
-print("----- pilih Menu -----")
-print("1. Penambahan Data Barang")
-print("2. Penghapusan Data Barang")
-print("3. Pencarian Data Barang")
-print("4. Pengubahan Data Barang")
-print("5. Tampil Data Barang")
-print("0. keluar")
-pilih = int(input("Pilih Menu :"))
-
-# Class Untuk Node
-class data :
-    def __init__(self,info):
-        self.info = info
+# 1. Pendefinisian Struktur Data Linked List
+class Barang:
+    def __init__(self,KodeBrg,NamaBrg,StatusStok,HargaBeli,Stok,HargaJual):
+        self.KodeBrg = KodeBrg
+        self.NamaBrg = NamaBrg
+        self.StatusStok = StatusStok
+        self.HargaBeli = HargaBeli
+        self.Stok = Stok
+        self.HargaJual = HargaJual
+        
+class DataBarang:
+    def __init__(self,Barang):
+        self.info = Barang
         self.next = None
 
-
-# Class Untuk Linked List
-class linkedList:
+# Class Linked List
+class LinkedList:
     def __init__(self):
         self.awal = None
 
-    def isEmpty(self):
+    def IsEmpty(self):
         return self.awal is None
-    def tampilData(self):
-        print("Isi Data Barang: ",end=" ")
-        if self.isEmpty():
-            print("Data Kosong")
-        else:
-            bantu = self.awal
-            while bantu is not None:
-                    print(bantu.info," ",end=" ")
-                    if (bantu.next != None):
-                        print(" ",end=" ")
-                    bantu = bantu.next
 
-            print()
-    def banyakNode(self):
-        if self.isEmpty() :
-            bykNode = 0
+    def BanyakNode(self):
+        if self.IsEmpty():
+            byknode = 0
         else:
             bantu = self.awal
-            bykNode = 0
-            while bantu is not None: 
-                bykNode += 1
+            byknode = 0
+            while bantu is not None:
+                byknode = byknode + 1
                 bantu = bantu.next
-        return bykNode
-    def penghancuran(self):
+
+        return byknode
+
+    def HargaJual(self):
+        if self.IsEmpty():
+            untung = int(input("Berapa Persen Keuntungan : "))
+            untung =  untung / 100
+            HargaJual = (HargaBeli * untung) + HargaBeli
+        else:
+            untung = int(input("Berapa Persen Keuntungan : "))
+            untung = untung / 100
+            HargaJual = (HargaBeli * untung) + HargaBeli
+        return HargaJual
+
+    def StatusStok(self):
+        if self.IsEmpty():
+            if Stok <= 35:
+                StatusStok = "Aman"
+            else:
+                StatusStok = "Tidak Aman"
+        else:
+            if Stok <= 35:
+                StatusStok = "Aman"
+            else:
+                StatusStok = "Tidak Aman"
+
+        return StatusStok
+
+    def Penghancuran(self):
         Phapus = self.awal
-        while Phapus != None:
-            Phapus = Phapus.next
+        while (Phapus is not None):
+            self.awal = Phapus.next
             del Phapus
             Phapus = self.awal
 
-# Operasi Pencarian
-# Pencarian Data
-    def PencarianKodeBarang (self) :
-        if self.isEmpty():
-            print ("Data Kosong")
-        else:
-            CariAngka = int(input("Masukan Kode Barang Yang Ingin Dicari : "))
-            bantu = self.awal
-            ketemu = False
-            while (not ketemu) and (bantu is not None):
-                if (bantu.info == CariAngka):
-                    ketemu = True
-                else:
-                    bantu = bantu.next
-            if(ketemu):
-                print("Kode Barang",CariAngka,"Ditemukan")
-                if (CariAngka == 234):
-                    namaBarang = "Beng-Beng"
-                    print("Nama Barang : ",namaBarang)
-                elif (CariAngka == 345):
-                    namaBarang = "Good Day"
-                    print("Nama Barang : ",namaBarang)
-                elif(CariAngka == 223):
-                    namaBarang = "milo"
-                    print("Nama Barang : ",namaBarang)
-                elif(CariAngka == 101):
-                    namaBarang = "Garnier Facial Wash"
-                    print("Nama Barang : ",namaBarang)
-                elif(CariAngka == 255):
-                    namaBarang ="Bimoli"
-                    print("Nama Barang : ",namaBarang)
-                else:
-                    print("Barang tidak di temukan")
-            else:
-                print("Kode Barang",CariAngka,"Tidak Ditemukan")
-# Pencarian Node
-    def sts(self,CariKode):
-        if(CariKode == 234):
-            stat = "aman"
-        elif(CariKode == 345):
-            stat = "aman"
-        elif(CariKode == 223):
-            stat = "aman"
-        elif(CariKode == 101):
-            stat = "aman"
-        elif(CariKode == 225):
-            stat ="Tidak aman"
-        return stat
-    
-    def PencarianStock (self,CariKode) :
-         if self.isEmpty():
-            print ("Data Kosong")
-         else:
-            bantu = self.awal
-            ketemu = False
-            while (not ketemu) and (bantu is not None):
-                if (bantu.info == CariKode):
-                    ketemu = True
-                else:
-                    bantu = bantu.next
-            if(ketemu):
-                print("Kode Barang",CariKode,"Ditemukan")
-                if (CariKode == 234):
-                    namaBarang = "Chocolatos"
-                    stock = 30
-                    dasd = self.sts(CariKode)
-                    print("Nama Barang  : ",namaBarang)
-                    print("Stock Barang : ",stock)
-                    print("Status       : ",dasd)
-                elif (CariKode == 345):
-                    namaBarang = "Good Day"
-                    stock = 20
-                    dasd = self.sts(CariKode)
-                    print("Nama Barang  : ",namaBarang)
-                    print("Stock Barang : ",stock)
-                    print("Status       : ",dasd)
-                elif(CariKode == 223):
-                    namaBarang = "milo"
-                    stock = 15
-                    dasd = self.sts(CariKode)
-                    print("Nama Barang  : ",namaBarang)
-                    print("Stock Barang : ",stock)
-                    print("Status       : ",dasd)
-                elif(CariKode == 101):
-                    namaBarang = "Garnier Facial Wash"
-                    stock = 17
-                    dasd = self.sts(CariKode)
-                    print("Nama Barang  : ",namaBarang)
-                    print("Stock Barang : ",stock)
-                    print("Status       : ",dasd)
-                elif(CariKode == 255):
-                    namaBarang ="Bimoli"
-                    stock = 0
-                    dasd = self.sts(CariKode)
-                    print("Nama Barang  : ",namaBarang)
-                    print("Stock Barang : ",stock)
-                    print("Status       : ",dasd)
-                else:
-                    print("Barang tidak di temukan")
-            else:
-                print("Kode Barang",CariKode,"Tidak Ditemukan")
-    # Bagian Ferdi 
-    def hargaJual(self):
-        pass
-
-# Penambahan Data
-# Penambahan di Depan
-    def SisipDepanSingle(self,DataBaru):
-        Baru = data(DataBaru)
-        if(not self.isEmpty()):
+    # Penambahan Data
+    # Penambahan di Depan
+    def TambahDepanSingle(self,DataBaru):
+        Baru = DataBarang(DataBaru)
+        if (not self.IsEmpty()):
             Baru.next = self.awal
         self.awal = Baru
-# Penambahan di Belakang
-    def SisipBelakangSingle(self,DataBaru):
-        Baru = data(DataBaru)
-        if(self.isEmpty()):
+
+    # Penambahan di Belakang
+    def TambahBelakangSingle(self, DataBaru):
+        Baru = DataBarang(DataBaru)
+        if (self.IsEmpty()):
             self.awal = Baru
         else:
             bantu = self.awal
@@ -178,32 +84,134 @@ class linkedList:
                 bantu = bantu.next
             bantu.next = Baru
 
-# Penambahan di Tengah (Sisip)
-    def SisipTengahSingle(self, DataBaru):
-        SisipSetelah = int(input("Sisipkan Setelah : "))
+    # Penambahan di Tengah (sisip)
+    def TambahTengahSingle(self,DataBaru):
+        SisipSetelah = str(input('Sisipkan Setelah : '))
         bantu = self.awal
         ketemu = False
-        while(not ketemu) and (bantu is not None):
-            if(bantu.info == SisipSetelah):
+        while (not ketemu) and (bantu is not None):
+            if (bantu.info,KodeBrg == SisipSetelah):
                 ketemu = True
             else:
                 bantu = bantu.next
-        if(ketemu):
-            Baru = data(DataBaru)
-            if(bantu.next is None):
-                self.SisipBelakangSingle(DataBaru)
+
+        if (ketemu):
+            Baru = DataBarang(DataBaru)
+            if (bantu.next is None):
+                self.TambahBelakangSingle(DataBaru)
             else:
                 Baru.next = bantu.next
                 bantu.next = Baru
         else:
-            print("Data",SisipSetelah,"Tidak Ditemukan")
+            print('Data ', SisipSetelah, ' Data Tidak Ditemukan')
 
-# Pengubahan Data
-    def UbahData(self):
-        if(self.isEmpty()):
-            print("Data Kosong")
+    # PENGHAPUSAN DATA
+    def SatuNode(self):
+        bantu = self.awal
+        if (bantu.next is None):
+            return True
         else:
-            DataUbah = int(input("Masukan Data Yang Ingin Diubah : "))
+            return False
+
+    # Penghapusan Depan
+    def HapusDepanSingle(self):
+        if (self.IsEmpty()):
+            print('Data Kosong')
+        else:
+            Phapus = self.awal
+            Elemen = Phapus.info
+            if (self.SatuNode()):
+                self.awal = None
+            else:
+                self.awal = Phapus.next
+
+            del Phapus
+            print('Data yang dihapus adalah : ', Elemen)
+
+    # Penghapusan Belakang
+    def HapusBelakangSingle(self):
+        if (self.IsEmpty()):
+            print('Data Kosong')
+        else:
+            Phapus = self.awal
+            if (self.SatuNode()):
+                self.awal = None
+            else:
+               
+                while (Phapus.next is not None):
+                    Phapus = Phapus.next
+
+              
+                bantu = self.awal
+                while (bantu.next is not Phapus):
+                    bantu = bantu.next
+
+                bantu.next = None
+
+            Elemen = Phapus.info
+            del Phapus
+            print('Data yang dihapus: ', Elemen)
+
+    # Penghapusan Tengah
+    def HapusTengahSingle(self):
+        if (self.IsEmpty()):
+            print('Data Kosong')
+        else:
+            DataHapus = str(input('Masukkan Data Yang Ingin Dihapus : '))
+            Phapus = self.awal
+            ketemu = False
+            while (not ketemu) and (Phapus is not None):
+                if (Phapus.info,KodeBrg == DataHapus):
+                    ketemu = True
+                else:
+                    Phapus = Phapus.next
+
+            if (ketemu):
+                Elemen = Phapus.info
+                if (Phapus == self.awal):
+                    self.HapusDepanSingle()
+                elif (Phapus.next is None):
+                    self.HapusBelakangSingle()
+                else:
+                    bantu = self.awal
+                    while (bantu.next is not Phapus):
+                        bantu = bantu.next
+
+                    bantu.next = Phapus.next
+
+                    del Phapus
+                    print('Data yang dihapus: ', Elemen)
+            else:
+                print('Angka ', DataHapus, ' Tidak Ditemukan')
+
+#Operasi Pencarian
+#Pencarian Kode
+    def PencarianKodeBarang (self):
+        if self.IsEmpty():
+            print('Data Kosong')
+        else:
+            CariKode = str(input('Masukkan Kode Yang Dicari : '))
+            bantu = self.awal
+            ketemu = False
+            posisi = 1
+            while (not ketemu) and (bantu is not None):
+                if(bantu.info == CariKode):
+                    ketemu = True
+                else:
+                    bantu = bantu.next
+                    posisi = posisi+1
+
+            if(ketemu):
+                print('Kode ke- ',CariKode,' Ditemukan')
+            else:
+                print('Kode ke- ',CariKode,' Tidak Ditemukan')
+
+    # Pengubahan Data
+    def UbahData(self):
+        if (self.IsEmpty()):
+            print('Data Kosong')
+        else:
+            DataUbah = int(input('Masukkan Data Yang Ingin Diubah : '))
             bantu = self.awal
             ketemu = False
             while (not ketemu) and (bantu is not None):
@@ -211,235 +219,157 @@ class linkedList:
                     ketemu = True
                 else:
                     bantu = bantu.next
+
             if (ketemu):
-                DataBaru = int(input("Masukan Data Peubah : "))
+                DataBaru = int(input("Data Peubah : "))
                 bantu.info = DataBaru
             else:
-                print("Angka", DataUbah, "Tidak Ditemukan")
+                print('Data ', DataUbah, ' Tidak Ditemukan')
 
-# Penghapusan Data
-    def SatuNode(self):
-        bantu = self.awal
-        if(bantu.next is None):
-            return True
-        else:
-            return False
-# Penghapusan Depan
-    def HapusDepanSingle(self):
-        if(self.isEmpty()):
-            print("Data Kosong")
-        else:
-            Phapus = self.awal
-            Elemen = Phapus.info
-            if(self.SatuNode()):
-                self.awal = None
-            else:
-                self.awal = Phapus.next
-            del Phapus
-            print("Data Yang Dihapus Adalah : ",Elemen)
-# Penghapusan Belakang
-    def HapusBelakangSingle(self):
-        if(self.isEmpty()):
-            print("Data Kosong")
-        else:
-            Phapus = self.awal
-            if(self.SatuNode()):
-                self.awal = None
-            else:
-                # Pencarian Node Terakhir
-                while(Phapus.next is not None):
-                    Phapus = Phapus.next
-                # Pencarian Node Sebelum Node Terakhir
-                bantu = self.awal
-                while(bantu.next is not Phapus):
-                    bantu = bantu.next
-
-                bantu.next = None
-
-            Elemen = Phapus.info
-            del Phapus
-            print("Data Yang Dihapus Adalah : ",Elemen)
-
-
-# Penghapusan Tengah
-    def HapusTengahSingle(self):
-        if(self.isEmpty()):
-            print("Data Kosong")
-        else:
-            DataHapus = int(input("Masukan Angka Yang Akan Dihapus : "))
-            Phapus = self.awal
-            ketemu = False
-            while (not ketemu) and (Phapus is not None):
-                if (Phapus.info == DataHapus):
-                    ketemu = True
-                else:
-                    Phapus = Phapus.next
-            if (ketemu):
-                Elemen = Phapus.info
-                if(Phapus == self.awal):
-                    self.HapusDepanSingle()
-                elif (Phapus.next is None):
-                    self.HapusBelakangSingle()
-                else:
-                    bantu = self.awal
-                    while(bantu.next is not Phapus):
-                        bantu = bantu.next
-                    bantu.next = Phapus.next
-                    del Phapus
-                    print("Data Yang Dihapus Adalah : ", Elemen)
-            else:
-                print("Angka", DataHapus, "Tidak Ditemukan")
-
-# Pengurutan Data Secara Ascending Minimum Sort
-    def UrutData(self):
+    def UrutStokDataAsc(self):
         i = self.awal
         while(i.next is not None):
             min = i
             j = i.next
-            while(j is not  None):
+            while(j is not None):
                 if(j.info < min.info):
                     min = j
                 j = j.next
-            #Proses Pertukaran
             temp = min.info
             min.info = i.info
-            i.info = temp
-
-            #Tempatkan i ke simpul berikutnya
+            i.info = temp          
             i = i.next
 
+    def TampilData(self):
+        print('Isi Linked List : ', end='')
+        if self.IsEmpty():
+            print('Data Kosong')              
+        else:
+            bantu = self.awal
+            while bantu is not None:
+                print(bantu.info, ' ', end='')
+                if (bantu.next is not None):
+                    print('->  ', end='')
+                bantu = bantu.next
+                i = self.awal
+                while(i.next is not None):
+                    min = i
+                    j = i.next
+                    while(j is not None):
+                        if(j.info > min.info):
+                            min = j
+                        j = j.next
+                        temp = min.info
+                        min.info = i.info
+                        i.info = temp          
+                        i = i.next
+
+            print()
 
 
-# 2. Inisialisai Linked List
-list1 = linkedList()
-# print("Awal Linked List1 :",list1.awal)
+List1 = LinkedList()
+print("MENU PILIHAN")
+print("____________")
+print("1. Penambahan Data Barang")
+print("2. Penghapusan Data Barang")
+print("3. Pencarian Data Barang")
+print("4. Pengubahan Data Barang")
+print("5. Tampil Data Barang")
+print("0. Keluar")
+pilih = int(input("Masukkan Menu Pilihan : "))
+while pilih != 0:
+    if pilih == 1:
+        print("MENU PENAMBAHAN DATA")
+        print("____________________")
+        print("1. Penambahan Data Barang Di Depan")
+        print("2. Penambahan Data Barang Di Belakang")
+        print("3. Penambahan Data Barang Di Tengah")
+        print("0. Keluar")
+        pilih = int(input("Masukan Menu Pilihan : "))
+        while pilih != 0:
+            KodeBrg = str(input("Masukkan Kode Barang : "))
+            NamaBrg = str(input("Masukkan Nama Barang : "))
+            Stok = int(input("Masukkan Stok : "))
+            StatusStok = List1.StatusStok()
+            HargaBeli = int(input("Masukkan Harga Beli : "))
+            HargaJual = List1.HargaJual()
+            if pilih == 1:
+                List1.TambahDepanSingle([KodeBrg,NamaBrg,StatusStok,HargaBeli,Stok,HargaJual])
+                List1.TampilData()
+            elif pilih == 2:
+                List1.TambahBelakangSingle([KodeBrg,NamaBrg,StatusStok,HargaBeli,Stok,HargaJual])
+                List1.TampilData()
+            elif pilih == 3:
+                List1.TambahTengahSingle([KodeBrg,NamaBrg,StatusStok,HargaBeli,Stok,HargaJual])
+                List1.TampilData()
+            print("MENU PENAMBAHAN DATA")
+            print("____________________")
+            print("1. Penambahan Data Barang Di Depan")
+            print("2. Penambahan Data Barang Di Belakang")
+            print("3. Penambahan Data Barang Di Tengah")
+            print("0. Keluar")
+            pilih = int(input("Masukan Menu Pilihan : "))
+    elif pilih == 2:
+        print("MENU PENGHAPUSAN DATA")
+        print("1. Penghapusan Data Barang Di Depan")
+        print("2. Penghapusan Data Barang Di Belakang")
+        print("3. Penghapusan Data Barang Di Tengah")
+        print("0. Keluar")
+        pilih = int(input("Masukkan Menu Pilihan : "))
+        while pilih != 0:
+            if pilih == 1:
+                List1.HapusDepanSingle()
+                List1.TampilData()
+            elif pilih == 2:
+                List1.HapusBelakangSingle()
+                List1.TampilData()
+            elif pilih == 3:
+                List1.HapusTengahSingle()
+                List1.TampilData()
+            print("MENU PENGHAPUSAN DATA")
+            print("1. Penghapusan Data Barang Di Depan")
+            print("2. Penghapusan Data Barang Di Belakang")
+            print("3. Penghapusan Data Barang Di Tengah")
+            print("0. Keluar")
+            pilih = int(input("Masukkan Menu Pilihan : "))
+    elif pilih == 3:
+        print("MENU PENCARIAN DATA")
+        print("1. Pencarian Kode Barang Tertentu")
+        print("2. Pencarian Status Stok Tertentu")
+        print("3. Pencarian Harga Jual Tertentu")
+        print("0. Keluar")
+        pilih = int(input("Masukkan Menu Pilihan : "))
+        while pilih != 0:
+            if pilih == 1:
+                List1.PencarianKodeBarang()
 
-# 3. Memasukan Data Ke Linked List Secara Langsung
-# node1 = data(["Dinar","IF2",10121060])
-node1 = data(234)
-node2 = data(345)
-node3 = data(223)
-node4 = data(101)
-node5 = data(255)
-
-# print("Isi Node1 :",node1.info,"->",node1.next)
-# print("Isi Node2 :",node2.info,"->",node2.next)
-
-
-# Membuat Linked List dari 4 Node
-list1.awal = node1
-node1.next = node3
-node3.next = node2
-node2.next = node4
-node4.next = node5
-
-# print("Isi Node1 :",node1.info,"->",node1.next)
-# print("Isi Node2 :",node2.info,"->",node2.next)
-
-# Bagian ferdi
-#while != 0
-if pilih == 1:
-    print("------ Menu Penambahan ------")
-    print("1.Penambahan Data Barang di Depan")
-    print("2.Penambahan Data Barang di Belakang")
-    print("3.Penambahan Data Barang di Tengah")
-    pilhpnmbhn = int(input("Pilih Menu : "))
-    # while
-    if pilhpnmbhn == 1:
-        DataBaru = int(input("Masukan Data Baru : "))
-        list1.SisipDepanSingle(DataBaru)
-        list1.tampilData()
-        list1.penghancuran()
-    elif pilhpnmbhn == 2:
-        DataBaru = int(input("Masukan Data Baru : "))
-        list1.SisipBelakangSingle(DataBaru)
-        list1.tampilData()
-        list1.penghancuran()
-    elif pilhpnmbhn == 3:
-        DataBaru = int(input("Masukan Data Baru : "))
-        list1.SisipTengahSingle(DataBaru)
-        list1.tampilData()
-        list1.penghancuran()
-elif pilih == 2:
-     print("------ Menu Penghapusan ------")
-     print("1.Penghapusan Data Barang di Depan")
-     print("2.Penghapusan Data Barang di Belakang")
-     print("3.Penghapusan Data Barang di tengah")
-     pilhpnmbhn = int(input("Pilih Menu : "))
-     #while
-     if pilhpnmbhn == 1:
-        list1.HapusDepanSingle()
-        list1.tampilData()
-        list1.penghancuran()
-     elif pilhpnmbhn == 2:
-         list1.HapusBelakangSingle()
-         list1.tampilData()
-         list1.penghancuran()
-     elif pilhpnmbhn == 3:
-         list1.HapusTengahSingle()
-         list1.tampilData()
-         list1.penghancuran()
-elif pilih == 3:
-    print("------ Menu Pencarian ------")
-    print("1.Mencari Kode Barang Tertentu")
-    print("2.Pencarian stok Tertentu")
-    print("3.Pencarian Harga Jual Tertentu")
-    pilhpnmbhn = int(input("Pilih Menu : "))
-    #while
-    if pilhpnmbhn == 1 :
-        list1.PencarianKodeBarang()
-    elif(pilhpnmbhn == 2):
-        CariKode = int(input("Masukan Kode Barang Yang Ingin Dicari : "))
-        list1.PencarianStock(CariKode)
-elif pilih == 4:
-    list1.UbahData()
-    list1.tampilData()
-
-elif pilih == 5:
-    list1.tampilData()
-elif pilih == 0 :
-    print("Exit ")
-
-# 4. Traversal Linked List - Menampilkan Data
-#list1.tampilData()
-
-# 5. Traversal Linked List - Menghitung Banyaknya Data
-# print("Banyak Data : ",list1.banyakNode())
-
-# 7. Pencarian Linked List
-# Pencarian Medan Data
-# list1.PencarianAngka()
-# Penarian Node
-# list1.PencarianNode()
-
-# 8. Penambahan Data
-#DataBaru = int(input("Masukan Data Baru : "))
-# Penambahan di Depan
-#list1.SisipDepanSingle(DataBaru)
-# Penambahan di Belakang
-#list1.SisipBelakangSingle(DataBaru)
-# Penambahan di Tengah (Sisip)
-#list1.SisipTengahSingle(DataBaru)
-
-# 9. Pengubahan Data
-# list1.UbahData()
-
-# 10. Penghapusan Data
-# Penghapusan Depan
-# list1.HapusDepanSingle()
-# Penghapusan Belakang
-# list1.HapusBelakangSingle()
-# Penghapusan Tengah
-# list1.HapusTengahSingle()
-#if(list1.isEmpty()):
-    #print("Data Kosong")
-#else:
-    #list1.UrutData()
+    elif pilih == 4:
+        List1.UbahData()
+    elif pilih == 5 :
+        List1.TampilData()
+    elif pilih == 6:
+        List1.Penghancuran()
 
 
-#list1.tampilData()
+    print("MENU PILIHAN")
+    print("____________")
+    print("1. Penambahan Data Barang")
+    print("2. Penghapusan Data Barang")
+    print("3. Pencarian Data Barang")
+    print("4. Pengubahan Data Barang")
+    print("5. Tampil Data Barang")
+    print("0. Keluar")
+    pilih = int(input("Masukkan Menu Pilihan : "))
 
-# 6. Penghancuran Linked List
 
-# list1.tampilData()
-#print("Banyak Data : ",list1.banyakNode())
+
+
+
+
+
+
+
+
+
+
+
