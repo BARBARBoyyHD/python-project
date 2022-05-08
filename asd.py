@@ -1,3 +1,4 @@
+
 class Barang:
     def __init__(self,KodeBrg,NamaBrg,StatusStok,HargaBeli,Stok,HargaJual):
         self.KodeBrg = KodeBrg
@@ -46,12 +47,7 @@ class LinkedList:
 
     def StatusStok(self,Stok):
         if self.IsEmpty():
-            if Stok <= 35:
-                StatusStok = "Aman"
-            else:
-                StatusStok = "Tidak Aman"
-        else:
-            if Stok <= 35:
+            if Stok >= 35:
                 StatusStok = "Aman"
             else:
                 StatusStok = "Tidak Aman"
@@ -385,7 +381,7 @@ def menuPencarian():
             menuUtama()
         elif pilih == 2:
             cari = input("Masukkan Kode Barang : ")
-            print("Nim \t | Nama \t | Nilai \t | Indeks")
+            print("Kode Barang \t | Nama Barang\t | Status Stok\t | Harga Beli\t | Stok\t | Harga Jual\t ")
             List1.PencarianStatusStok(cari)
             menuUtama()
         elif pilih == 3:
@@ -409,7 +405,7 @@ def menuPengubahan():
     List1.UbahData()
 
 def menuTampil():
-    ()
+    List1.TampilData()
 
 
 menuUtama()
