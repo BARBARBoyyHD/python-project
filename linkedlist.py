@@ -1,4 +1,14 @@
 # 1. Pendefinisian Struktur Data Linked List
+print("MENU PILIHAN")
+print("____________")
+print("1. Penambahan Data Barang")
+print("2. Penghapusan Data Barang")
+print("3. Pencarian Data Barang")
+print("4. Pengubahan Data Barang")
+print("5. Tampil Data Barang")
+print("0. Keluar")
+pilih = int(input("Masukkan Menu Pilihan : "))
+
 class Barang:
     def __init__(self,KodeBrg,NamaBrg,StatusStok,HargaBeli,Stok,HargaJual):
         self.KodeBrg = KodeBrg
@@ -259,25 +269,17 @@ class LinkedList:
                         if(j.info > min.info):
                             min = j
                         j = j.next
-                        temp = min.info
-                        min.info = i.info
-                        i.info = temp          
-                        i = i.next
+                    temp = min.info                  
+                    min.info = i.info
+                    i.info = temp          
+                    i = i.next
 
             print()
 
 
 List1 = LinkedList()
-print("MENU PILIHAN")
-print("____________")
-print("1. Penambahan Data Barang")
-print("2. Penghapusan Data Barang")
-print("3. Pencarian Data Barang")
-print("4. Pengubahan Data Barang")
-print("5. Tampil Data Barang")
-print("0. Keluar")
-pilih = int(input("Masukkan Menu Pilihan : "))
-while pilih != 0:
+
+while pilih != 0: # jika tidak memilih angka 0 maka pengulangan akan berjalan continu 
     if pilih == 1:
         print("MENU PENAMBAHAN DATA")
         print("____________________")
